@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.silkimen.alfred.vscode</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>50B0CD10-4D52-4898-9C05-DD3A34A829C3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FA632E1B-07E7-4236-8B50-071B1ED9BE88</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>22716A87-F596-46BB-84DC-B0690BF54D7E</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Open in new VS Code window</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1102BCCF-75C0-4766-8324-D126D09573DD</string>
+				<key>modifiers</key>
+				<integer>8388608</integer>
+				<key>modifiersubtext</key>
+				<string>Reuse existing VS Code window</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F65655AB-D0B8-4F68-9FC5-53EFD1263FA8</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Open path in Terminal</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Sefa Ilkimen</string>
+	<key>description</key>
+	<string>Browse and open folders in Visual Studio Code</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Visual Studio Code</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>${vscodePath} "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FA632E1B-07E7-4236-8B50-071B1ED9BE88</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>vs</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>for path in ${searchPath}/*/; do
+items=$(echo "$items"; cat &lt;&lt; EOB
+{
+	"type": "file",
+	"uid": "$path",
+	"subtitle": "$path",
+	"arg": "$path",
+	"title": "$(basename "$path")",
+	"icon": {
+		"type": "filetype",
+		"path": "public.folder"
+	}
+},
+EOB); done
+
+echo "{\"items\":[$items]}"
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>test.sh</string>
+				<key>subtext</key>
+				<string>Open in Visual Studio Code</string>
+				<key>title</key>
+				<string>Visual Studio Code</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>50B0CD10-4D52-4898-9C05-DD3A34A829C3</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>${vscodePath} --new-window "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>22716A87-F596-46BB-84DC-B0690BF54D7E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>${vscodePath} --reuse-window "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1102BCCF-75C0-4766-8324-D126D09573DD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open -a Terminal.app "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F65655AB-D0B8-4F68-9FC5-53EFD1263FA8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Browse folders in given path and open them in Visual Studio Code.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1102BCCF-75C0-4766-8324-D126D09573DD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>260</integer>
+		</dict>
+		<key>22716A87-F596-46BB-84DC-B0690BF54D7E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>140</integer>
+		</dict>
+		<key>50B0CD10-4D52-4898-9C05-DD3A34A829C3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>70</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>F65655AB-D0B8-4F68-9FC5-53EFD1263FA8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>380</integer>
+		</dict>
+		<key>FA632E1B-07E7-4236-8B50-071B1ED9BE88</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>searchPath</key>
+		<string>/Volumes/Development</string>
+		<key>vscodePath</key>
+		<string>/usr/local/bin/code</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>http://www.ilkimen.net</string>
+</dict>
+</plist>

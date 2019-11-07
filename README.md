@@ -2,7 +2,7 @@
 This is a very simple Alfred workflow for browsing and opening folders in VS Code. It uses only built-in features and has no external dependencies.
 
 ## Installation
-Download workflow file `alfred-vscode.alfredworkflow` and install it on your device.
+Download workflow file [alfred-vscode.alfredworkflow](https://github.com/silkimen/alfred-vscode/raw/master/alfred-vscode.alfredworkflow) and install it on your device.
 
 You need to configure two variables:
 * `searchPath`: path containing folders to be browsed and opened in VS Code (you can use globbing patterns)
